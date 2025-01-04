@@ -287,7 +287,7 @@ const Portfolio = () => {
                             {
                                 role: "Software Engineer Intern",
                                 company: "Golden Island",
-                                period: "2023",
+                                period: "Dec 2024 - Present",
                                 description: [
                                     "Developed a Fleet Tracker with Pandas to track locations of 1000 ships with 320,000 lines of data daily",
                                     "Implemented algorithm to track ship proximity using Haversine Formula, achieving over 90% accuracy in docking detection",
@@ -298,7 +298,7 @@ const Portfolio = () => {
                             {
                                 role: "Software Developer",
                                 company: "Sheares Web",
-                                period: "2022 - Present",
+                                period: "Aug 2023 - Present",
                                 description: [
                                     "Developed Full-Stack Hostel Management Web Application (468 users)",
                                     "Developing Mobile Hostel Application (targeting 500 users)",
@@ -309,7 +309,7 @@ const Portfolio = () => {
                             {
                                 role: "Finance Executive Intern",
                                 company: "Biz IQ Academy",
-                                period: "2022",
+                                period: "Apr 2023 - Jun 2023",
                                 description: [
                                     "Automated financial payment receipt processing, improving efficiency by 8x"
                                 ],
