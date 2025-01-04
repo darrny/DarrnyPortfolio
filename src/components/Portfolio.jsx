@@ -1,5 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
+
+// Import assets
+import profileImg from '../assets/profile.jpg';
+import resumePDF from '../assets/resume.pdf';
+
+// Import project images
+import jobuImg from '../assets/projects/jobu.png';
+import spotifyouImg from '../assets/projects/spotifyou.png';
+import feinalpha from '../assets/projects/feinalpha.png';
+import howthefeelsImg from '../assets/projects/howthefeels.png';
+import darrnydotcomImg from '../assets/projects/darrnydotcom.png';
+import querysenseImg from '../assets/projects/querysense.png';
+import imageinationImg from '../assets/projects/imageination.png';
+import gymmyImg from '../assets/projects/gymmy.png';
+import resumegrillerImg from '../assets/projects/resumegriller.png';
 
 const Section = ({ children, id, className }) => (
     <motion.section
@@ -8,7 +23,7 @@ const Section = ({ children, id, className }) => (
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className={`py-16 ${className}`}  // Removed min-h-screen
+        className={`py-16 ${className}`}
     >
         {children}
     </motion.section>
@@ -27,7 +42,74 @@ const SocialLink = ({ href, children }) => (
 );
 
 const Portfolio = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const featuredProjects = [
+        {
+            name: "Jobu",
+            url: "https://jobu-jat.netlify.app/",
+            description: "Full-stack job application tracking system with categorization, progress tracking, and event logging",
+            tech: ["React", "Firebase", "JavaScript", "Tailwind CSS"],
+            image: jobuImg
+        },
+        {
+            name: "Spotifyou",
+            url: "https://spotifyou.vercel.app/",
+            description: "Spotify companion with AI integration for listening statistics and recommendations",
+            tech: ["React", "Supabase", "Gemini AI", "JavaScript", "Spotify API"],
+            image: spotifyouImg
+        },
+        {
+            name: "FeinAlpha",
+            url: "https://feinalpha.vercel.app/",
+            description: "Portfolio management application with secure authentication and management features",
+            tech: ["React", "Node.js", "Express", "MongoDB", "Firebase"],
+            image: feinalpha
+        }
+    ];
+
+    const petProjects = [
+        {
+            name: "HowTheFeels",
+            url: "https://how-the-feels.vercel.app/",
+            description: "Natural language processing application",
+            tech: ["React", "JavaScript", "Tailwind CSS", "Hugging Face API"],
+            image: howthefeelsImg
+        },
+        {
+            name: "DarrnyDotCom",
+            url: "https://darrny.netlify.app/",
+            description: "Personal portfolio website",
+            tech: ["CSS", "HTML"],
+            image: darrnydotcomImg
+        },
+        {
+            name: "QuerySense",
+            url: "https://querysense.vercel.app/",
+            description: "Data analysis application with AI integration",
+            tech: ["React", "JavaScript", "Tailwind CSS", "Google Generative AI"],
+            image: querysenseImg
+        },
+        {
+            name: "Imageination",
+            url: "https://imageination.netlify.app",
+            description: "AI image generation application",
+            tech: ["CSS", "React", "JavaScript", "Hugging Face API"],
+            image: imageinationImg
+        },
+        {
+            name: "Gymmy",
+            url: "https://gymmythegymbuddy.netlify.app/",
+            description: "Workout planning and motivation app",
+            tech: ["CSS", "React", "JavaScript"],
+            image: gymmyImg
+        },
+        {
+            name: "TheResumeGriller",
+            url: "https://the-resume-griller.vercel.app/",
+            description: "Resume analysis and feedback tool",
+            tech: ["React", "JavaScript", "Tailwind CSS", "Hugging Face API"],
+            image: resumegrillerImg
+        }
+    ];
 
     return (
         <div className="bg-background text-white min-h-screen">
@@ -66,10 +148,10 @@ const Portfolio = () => {
                         className="flex flex-col items-center md:items-start text-center md:text-left"
                     >
                         <h1 className="text-5xl font-bold">
-                            Hi, I'm <span className="text-blue-500">Darren</span>
+                            Hi, I'm <span className="text-blue-500">Darren</span><br />
                         </h1>
                         <p className="text-xl text-gray-400 mt-4">
-                            "I do some coding stuff i guess"
+                            "I dance and I code."
                         </p>
                         <div className="flex space-x-4 mt-4">
                             <SocialLink href="https://github.com/darrny">GitHub</SocialLink>
@@ -77,9 +159,8 @@ const Portfolio = () => {
                             <SocialLink href="mailto:darren.lim.off@gmail.com">Email</SocialLink>
                         </div>
 
-                        {/* Resume Download Button */}
                         <motion.a
-                            href="/src/assets/resume.pdf"
+                            href={resumePDF}
                             download="Darren_Lim_Resume.pdf"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
@@ -109,7 +190,7 @@ const Portfolio = () => {
                         className="flex justify-center"
                     >
                         <img
-                            src="/src/assets/profile.jpg"
+                            src={profileImg}
                             alt="Darren Lim"
                             className="w-64 h-64 rounded-full object-cover border-4 border-blue-500"
                         />
@@ -122,7 +203,7 @@ const Portfolio = () => {
                 <div className="max-w-6xl mx-auto px-4">
                     <h2 className="text-3xl font-bold mb-8">About Me</h2>
                     <p className="text-xl text-gray-300 mb-12">
-                        I'm a Software Engineer based in <span className="text-blue-500">Singapore</span>, and I'm planning to specialise in <span className="text-blue-500">AI/ML</span> and <span className="text-blue-500">Database Systems</span>.
+                        I'm a Software Engineer based in <span className="text-blue-500">Singapore</span> and I plan to specialise in <span className="text-blue-500">AI/ML</span> and <span className="text-blue-500">Database Systems</span>.
                     </p>
 
                     {/* Skills Grid */}
@@ -181,12 +262,11 @@ const Portfolio = () => {
                             <h3 className="text-xl font-semibold text-blue-400 mb-4">APIs</h3>
                             <div className="flex flex-wrap gap-2">
                                 {[
+                                    'RESTful API',
                                     'Spotify API',
                                     'Hugging Face API',
                                     'Google Generative AI',
-                                    'Gemini AI',
-                                    'OpenAI API',
-                                    'AISStream API'
+                                    'Gemini AI'
                                 ].map((skill) => (
                                     <span key={skill} className="bg-blue-500/10 text-blue-300 px-3 py-1 rounded-full text-sm">
                                         {skill}
@@ -207,7 +287,7 @@ const Portfolio = () => {
                             {
                                 role: "Software Engineer Intern",
                                 company: "Golden Island",
-                                period: "Dec 2023 - Present",
+                                period: "2023",
                                 description: [
                                     "Developed a Fleet Tracker with Pandas to track locations of 1000 ships with 320,000 lines of data daily",
                                     "Implemented algorithm to track ship proximity using Haversine Formula, achieving over 90% accuracy in docking detection",
@@ -218,7 +298,7 @@ const Portfolio = () => {
                             {
                                 role: "Software Developer",
                                 company: "Sheares Web",
-                                period: "Aug 2023 - Present",
+                                period: "2022 - Present",
                                 description: [
                                     "Developed Full-Stack Hostel Management Web Application (468 users)",
                                     "Developing Mobile Hostel Application (targeting 500 users)",
@@ -229,7 +309,7 @@ const Portfolio = () => {
                             {
                                 role: "Finance Executive Intern",
                                 company: "Biz IQ Academy",
-                                period: "Apr 2023",
+                                period: "2022",
                                 description: [
                                     "Automated financial payment receipt processing, improving efficiency by 8x"
                                 ],
@@ -264,41 +344,19 @@ const Portfolio = () => {
                 </div>
             </Section>
 
-            {/* Featured Projects Section */}
+            {/* Featured Projects */}
             <Section id="projects" className="bg-background-light">
                 <div className="max-w-6xl mx-auto px-4">
                     <h2 className="text-3xl font-bold mb-12">Featured Projects</h2>
                     <div className="grid md:grid-cols-2 gap-8">
-                        {[
-                            {
-                                name: "Jobu",
-                                url: "https://jobu-jat.netlify.app/",
-                                description: "Full-stack job application tracking system with categorization, progress tracking, and event logging",
-                                tech: ["React", "Firebase", "JavaScript", "Tailwind CSS"],
-                                image: "/src/assets/projects/jobu.png"
-                            },
-                            {
-                                name: "Spotifyou",
-                                url: "https://spotifyou.vercel.app/",
-                                description: "Spotify companion with AI integration for listening statistics and recommendations",
-                                tech: ["React", "Supabase", "Gemini AI", "JavaScript", "Spotify API"],
-                                image: "/src/assets/projects/spotifyou.png"
-                            },
-                            {
-                                name: "FeinAlpha",
-                                url: "https://feinalpha.vercel.app/",
-                                description: "Portfolio management application with secure authentication and management features",
-                                tech: ["React", "Node.js", "Express", "MongoDB", "Firebase"],
-                                image: "/src/assets/projects/feinalpha.png"
-                            }
-                        ].map((project, index) => (
+                        {featuredProjects.map((project, index) => (
                             <motion.a
                                 href={project.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 key={index}
                                 whileHover={{ y: -5 }}
-                                className="bg-background-lighter rounded-lg overflow-hidden"
+                                className="bg-background-lighter rounded-lg overflow-hidden group"
                             >
                                 <div className="relative aspect-video overflow-hidden">
                                     <img
@@ -306,6 +364,7 @@ const Portfolio = () => {
                                         alt={project.name}
                                         className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
                                     />
+                                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                 </div>
                                 <div className="p-6">
                                     <h3 className="text-xl font-semibold mb-2 text-blue-400">{project.name}</h3>
@@ -326,55 +385,12 @@ const Portfolio = () => {
                 </div>
             </Section>
 
-            {/* Pet Projects Section */}
+            {/* Pet Projects */}
             <Section id="pet-projects">
                 <div className="max-w-6xl mx-auto px-4">
                     <h2 className="text-3xl font-bold mb-12">Pet Projects</h2>
                     <div className="grid md:grid-cols-3 gap-6">
-                        {[
-                            {
-                                name: "HowTheFeels",
-                                url: "https://how-the-feels.vercel.app/",
-                                description: "Natural language processing application",
-                                tech: ["React", "JavaScript", "Tailwind CSS", "Hugging Face API"],
-                                image: "/src/assets/projects/howthefeels.png"
-                            },
-                            {
-                                name: "DarrnyDotCom",
-                                url: "https://darrny.netlify.app/",
-                                description: "Personal portfolio website",
-                                tech: ["CSS", "HTML"],
-                                image: "/src/assets/projects/darrnydotcom.png"
-                            },
-                            {
-                                name: "QuerySense",
-                                url: "https://querysense.vercel.app/",
-                                description: "Data analysis application with AI integration",
-                                tech: ["React", "JavaScript", "Tailwind CSS", "Google Generative AI"],
-                                image: "/src/assets/projects/querysense.png"
-                            },
-                            {
-                                name: "Imageination",
-                                url: "https://imageination.netlify.app",
-                                description: "AI image generation application",
-                                tech: ["CSS", "React", "JavaScript", "Hugging Face API"],
-                                image: "/src/assets/projects/imageination.png"
-                            },
-                            {
-                                name: "Gymmy",
-                                url: "https://gymmythegymbuddy.netlify.app/",
-                                description: "Workout planning and motivation app",
-                                tech: ["CSS", "React", "JavaScript"],
-                                image: "/src/assets/projects/gymmy.png"
-                            },
-                            {
-                                name: "TheResumeGriller",
-                                url: "https://the-resume-griller.vercel.app/",
-                                description: "Resume analysis and feedback tool",
-                                tech: ["React", "JavaScript", "Tailwind CSS", "Hugging Face API"],
-                                image: "/src/assets/projects/resumegriller.png"
-                            }
-                        ].map((project, index) => (
+                        {petProjects.map((project, index) => (
                             <motion.a
                                 href={project.url}
                                 target="_blank"
@@ -420,9 +436,9 @@ const Portfolio = () => {
                         whileHover={{ scale: 1.02 }}
                         className="bg-background-lighter p-6 rounded-lg mb-8"
                     >
-                        <h3 className="text-2xl font-semibold text-blue-400 mb-2">Computer Science with a Minor in Quantitative Finance</h3>
+                        <h3 className="text-2xl font-semibold text-blue-400 mb-2">Computer Science</h3>
                         <p className="text-xl text-gray-300 mb-1">National University of Singapore (NUS)</p>
-                        <p className="text-gray-400 mb-4">Sophomore</p>
+                        <p className="text-gray-400 mb-4">Year 2 Student</p>
                     </motion.div>
 
                     {/* Relevant Coursework */}
@@ -541,31 +557,38 @@ const Portfolio = () => {
             </Section>
 
             {/* Contact Section */}
-            <Section id="contact">
+            <Section id="contact" className="py-12">
                 <div className="max-w-6xl mx-auto px-4 text-center">
-                    <h2 className="text-3xl font-bold mb-8">Get In Touch</h2>
+                    <h2 className="text-3xl font-bold mb-6">Get In Touch</h2>
                     <motion.div
-                        whileHover={{ scale: 1.05 }}
-                        className="bg-background-lighter p-8 rounded-lg max-w-xl mx-auto"
+                        whileHover={{ scale: 1.02 }}
+                        className="bg-background-lighter p-6 rounded-lg max-w-xl mx-auto"
                     >
-                        <p className="text-gray-400 mb-6">
+                        <p className="text-gray-400 mb-4">
                             Feel free to reach out for collaborations or just a friendly hello!
                         </p>
                         <motion.a
                             href="mailto:darren.lim.off@gmail.com"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className="bg-blue-500 px-8 py-3 rounded-full hover:bg-blue-600 transition-colors inline-block"
+                            className="bg-blue-500 px-8 py-3 rounded-full hover:bg-blue-600 transition-colors inline-block mb-4"
                         >
                             Say Hello
                         </motion.a>
-                        <div className="flex justify-center space-x-6 mt-8">
+                        <div className="flex justify-center space-x-6">
                             <SocialLink href="https://github.com/darrny">GitHub</SocialLink>
                             <SocialLink href="https://linkedin.com/in/darrny">LinkedIn</SocialLink>
                         </div>
                     </motion.div>
                 </div>
             </Section>
+
+            {/* Footer */}
+            <footer className="bg-background-lighter py-4 text-center text-sm text-gray-400">
+                <div className="max-w-6xl mx-auto px-4">
+                    Designed & Built by Darren Lim © 2024
+                </div>
+            </footer>
         </div>
     );
 };
