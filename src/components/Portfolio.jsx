@@ -151,7 +151,7 @@ const Portfolio = () => {
                             Hi, I'm <span className="text-blue-500">Darren</span><br />
                         </h1>
                         <p className="text-xl text-gray-400 mt-4">
-                            "I dance and I code."
+                            "I code stuff."
                         </p>
                         <div className="flex space-x-4 mt-4">
                             <SocialLink href="https://github.com/darrny">GitHub</SocialLink>
@@ -437,7 +437,7 @@ const Portfolio = () => {
                         whileHover={{ scale: 1.02 }}
                         className="bg-background-lighter p-6 rounded-lg mb-8"
                     >
-                        <h3 className="text-2xl font-semibold text-blue-400 mb-2">Computer Science</h3>
+                        <h3 className="text-2xl font-semibold text-blue-400 mb-2">Computer Science with a minor in Quantitative Finance</h3>
                         <p className="text-xl text-gray-300 mb-1">National University of Singapore (NUS)</p>
                         <p className="text-gray-400 mb-4">Year 2 Student</p>
                     </motion.div>
