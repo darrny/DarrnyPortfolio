@@ -218,8 +218,7 @@ const Portfolio = () => {
                                 {[
                                     'Python',
                                     'JavaScript',
-                                    'HTML',
-                                    'CSS',
+                                    'SQL',
                                     'VBA'
                                 ].map((skill) => (
                                     <span key={skill} className="bg-blue-500/10 text-blue-300 px-3 py-1 rounded-full text-sm">
@@ -245,7 +244,8 @@ const Portfolio = () => {
                                     'MongoDB',
                                     'Tailwind CSS',
                                     'Express',
-                                    'Pandas'
+                                    'Pandas',
+                                    'NumPy'
                                 ].map((skill) => (
                                     <span key={skill} className="bg-blue-500/10 text-blue-300 px-3 py-1 rounded-full text-sm">
                                         {skill}
@@ -262,11 +262,12 @@ const Portfolio = () => {
                             <h3 className="text-xl font-semibold text-blue-400 mb-4">APIs</h3>
                             <div className="flex flex-wrap gap-2">
                                 {[
-                                    'RESTful API',
                                     'Spotify API',
                                     'Hugging Face API',
                                     'Google Generative AI',
-                                    'Gemini AI'
+                                    'Gemini AI',
+                                    'OpenAI AI',
+                                    'AISStream API'
                                 ].map((skill) => (
                                     <span key={skill} className="bg-blue-500/10 text-blue-300 px-3 py-1 rounded-full text-sm">
                                         {skill}
