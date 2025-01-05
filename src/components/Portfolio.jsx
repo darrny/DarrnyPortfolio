@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
 
 // Import assets
 import profileImg from '../assets/profile.jpg';
@@ -23,25 +24,28 @@ const Section = ({ children, id, className }) => (
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className={`py-16 ${className}`}
+        className={`py-16 transform-gpu ${className}`}
     >
         {children}
     </motion.section>
 );
 
-const SocialLink = ({ href, children }) => (
+const SocialLink = ({ href, icon: Icon, children }) => (
     <motion.a
         href={href}
         target="_blank"
         rel="noopener noreferrer"
         whileHover={{ scale: 1.1 }}
-        className="text-blue-400 hover:text-blue-300 transition-colors"
+        className="text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-2"
     >
+        <Icon size={20} />
         {children}
     </motion.a>
 );
 
 const Portfolio = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
     const featuredProjects = [
         {
             name: "Jobu",
@@ -66,55 +70,10 @@ const Portfolio = () => {
         }
     ];
 
-    const petProjects = [
-        {
-            name: "HowTheFeels",
-            url: "https://how-the-feels.vercel.app/",
-            description: "Natural language processing application",
-            tech: ["React", "JavaScript", "Tailwind CSS", "Hugging Face API"],
-            image: howthefeelsImg
-        },
-        {
-            name: "DarrnyDotCom",
-            url: "https://darrny.netlify.app/",
-            description: "Personal portfolio website",
-            tech: ["CSS", "HTML"],
-            image: darrnydotcomImg
-        },
-        {
-            name: "QuerySense",
-            url: "https://querysense.vercel.app/",
-            description: "Data analysis application with AI integration",
-            tech: ["React", "JavaScript", "Tailwind CSS", "Google Generative AI"],
-            image: querysenseImg
-        },
-        {
-            name: "Imageination",
-            url: "https://imageination.netlify.app",
-            description: "AI image generation application",
-            tech: ["CSS", "React", "JavaScript", "Hugging Face API"],
-            image: imageinationImg
-        },
-        {
-            name: "Gymmy",
-            url: "https://gymmythegymbuddy.netlify.app/",
-            description: "Workout planning and motivation app",
-            tech: ["CSS", "React", "JavaScript"],
-            image: gymmyImg
-        },
-        {
-            name: "TheResumeGriller",
-            url: "https://the-resume-griller.vercel.app/",
-            description: "Resume analysis and feedback tool",
-            tech: ["React", "JavaScript", "Tailwind CSS", "Hugging Face API"],
-            image: resumegrillerImg
-        }
-    ];
-
     return (
         <div className="bg-background text-white min-h-screen">
             {/* Navigation */}
-            <nav className="fixed top-0 w-full bg-background/90 backdrop-blur-sm z-50">
+            <nav className="fixed top-0 w-full bg-black/80 backdrop-blur-sm border-b border-white/10 z-50 transform-gpu">
                 <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
@@ -124,6 +83,7 @@ const Portfolio = () => {
                         Darrny
                     </motion.div>
 
+                    {/* Desktop Navigation */}
                     <div className="hidden md:flex space-x-8">
                         {['About', 'Experience', 'Projects', 'Education', 'Contact'].map((item) => (
                             <motion.a
@@ -136,7 +96,37 @@ const Portfolio = () => {
                             </motion.a>
                         ))}
                     </div>
+
+                    {/* Mobile Menu Button */}
+                    <button
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        className="md:hidden text-white"
+                    >
+                        {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
                 </div>
+
+                {/* Mobile Navigation */}
+                {isMenuOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="md:hidden bg-background/95 backdrop-blur-sm"
+                    >
+                        <div className="flex flex-col px-4 py-2">
+                            {['About', 'Experience', 'Projects', 'Education', 'Contact'].map((item) => (
+                                <a
+                                    key={item}
+                                    href={`#${item.toLowerCase()}`}
+                                    onClick={() => setIsMenuOpen(false)}
+                                    className="py-2 hover:text-blue-400 transition-colors"
+                                >
+                                    {item}
+                                </a>
+                            ))}
+                        </div>
+                    </motion.div>
+                )}
             </nav>
 
             {/* Hero Section */}
@@ -151,12 +141,12 @@ const Portfolio = () => {
                             Hi, I'm <span className="text-blue-500">Darren</span><br />
                         </h1>
                         <p className="text-xl text-gray-400 mt-4">
-                            "I code stuff."
+                            "I dance and I code."
                         </p>
-                        <div className="flex space-x-4 mt-4">
-                            <SocialLink href="https://github.com/darrny">GitHub</SocialLink>
-                            <SocialLink href="https://linkedin.com/in/darrny">LinkedIn</SocialLink>
-                            <SocialLink href="mailto:darren.lim.off@gmail.com">Email</SocialLink>
+                        <div className="flex space-x-6 mt-4">
+                            <SocialLink href="https://github.com/darrny" icon={Github} />
+                            <SocialLink href="https://linkedin.com/in/darrny" icon={Linkedin} />
+                            <SocialLink href="mailto:darren.lim.off@gmail.com" icon={Mail} />
                         </div>
 
                         <motion.a
@@ -203,7 +193,7 @@ const Portfolio = () => {
                 <div className="max-w-6xl mx-auto px-4">
                     <h2 className="text-3xl font-bold mb-8">About Me</h2>
                     <p className="text-xl text-gray-300 mb-12">
-                        I'm a Software Engineer based in <span className="text-blue-500">Singapore</span> and I plan to specialise in <span className="text-blue-500">AI/ML</span> and <span className="text-blue-500">Database Systems</span>.
+                        I'm a Software Engineer based in Singapore! I plan to specialise in AI/ML and Database Systems.
                     </p>
 
                     {/* Skills Grid */}
@@ -211,7 +201,7 @@ const Portfolio = () => {
                         {/* Languages */}
                         <motion.div
                             whileHover={{ y: -5 }}
-                            className="bg-background p-6 rounded-lg"
+                            className="bg-background p-6 rounded-lg transform-gpu"
                         >
                             <h3 className="text-xl font-semibold text-blue-400 mb-4">Languages</h3>
                             <div className="flex flex-wrap gap-2">
@@ -231,7 +221,7 @@ const Portfolio = () => {
                         {/* Technologies */}
                         <motion.div
                             whileHover={{ y: -5 }}
-                            className="bg-background p-6 rounded-lg"
+                            className="bg-background p-6 rounded-lg transform-gpu"
                         >
                             <h3 className="text-xl font-semibold text-blue-400 mb-4">Technologies</h3>
                             <div className="flex flex-wrap gap-2">
@@ -245,7 +235,7 @@ const Portfolio = () => {
                                     'Tailwind CSS',
                                     'Express',
                                     'Pandas',
-                                    'NumPy'
+                                    'HTML'
                                 ].map((skill) => (
                                     <span key={skill} className="bg-blue-500/10 text-blue-300 px-3 py-1 rounded-full text-sm">
                                         {skill}
@@ -257,7 +247,7 @@ const Portfolio = () => {
                         {/* APIs */}
                         <motion.div
                             whileHover={{ y: -5 }}
-                            className="bg-background p-6 rounded-lg"
+                            className="bg-background p-6 rounded-lg transform-gpu"
                         >
                             <h3 className="text-xl font-semibold text-blue-400 mb-4">APIs</h3>
                             <div className="flex flex-wrap gap-2">
@@ -266,7 +256,7 @@ const Portfolio = () => {
                                     'Hugging Face API',
                                     'Google Generative AI',
                                     'Gemini AI',
-                                    'OpenAI AI',
+                                    'OpenAI API',
                                     'AISStream API'
                                 ].map((skill) => (
                                     <span key={skill} className="bg-blue-500/10 text-blue-300 px-3 py-1 rounded-full text-sm">
@@ -299,7 +289,7 @@ const Portfolio = () => {
                             {
                                 role: "Software Developer",
                                 company: "Sheares Web",
-                                period: "Aug 2023 - Present",
+                                period: "Aug 2024 - Present",
                                 description: [
                                     "Developed Full-Stack Hostel Management Web Application (468 users)",
                                     "Developing Mobile Hostel Application (targeting 500 users)",
@@ -322,7 +312,7 @@ const Portfolio = () => {
                                 initial={{ opacity: 0, x: -20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ delay: index * 0.1 }}
-                                className="bg-background-lighter p-6 rounded-lg hover:bg-background-light transition-colors"
+                                className="bg-background-lighter p-6 rounded-lg hover:bg-background-light transition-colors transform-gpu"
                             >
                                 <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
                                     <div>
@@ -357,7 +347,7 @@ const Portfolio = () => {
                                 rel="noopener noreferrer"
                                 key={index}
                                 whileHover={{ y: -5 }}
-                                className="bg-background-lighter rounded-lg overflow-hidden group"
+                                className="bg-background-lighter rounded-lg overflow-hidden group transform-gpu"
                             >
                                 <div className="relative aspect-video overflow-hidden">
                                     <img
@@ -391,14 +381,57 @@ const Portfolio = () => {
                 <div className="max-w-6xl mx-auto px-4">
                     <h2 className="text-3xl font-bold mb-12">Pet Projects</h2>
                     <div className="grid md:grid-cols-3 gap-6">
-                        {petProjects.map((project, index) => (
+                        {[
+                            {
+                                name: "HowTheFeels",
+                                url: "https://how-the-feels.vercel.app/",
+                                description: "Natural language processing application",
+                                tech: ["React", "JavaScript", "Tailwind CSS", "Hugging Face API"],
+                                image: howthefeelsImg
+                            },
+                            {
+                                name: "DarrnyDotCom",
+                                url: "https://darrny.netlify.app/",
+                                description: "Personal portfolio website",
+                                tech: ["CSS", "React"],
+                                image: darrnydotcomImg
+                            },
+                            {
+                                name: "QuerySense",
+                                url: "https://querysense.vercel.app/",
+                                description: "Data analysis application with AI integration",
+                                tech: ["React", "JavaScript", "Tailwind CSS", "Google Generative AI"],
+                                image: querysenseImg
+                            },
+                            {
+                                name: "Imageination",
+                                url: "https://imageination.netlify.app",
+                                description: "AI image generation application",
+                                tech: ["CSS", "React", "JavaScript", "Hugging Face API"],
+                                image: imageinationImg
+                            },
+                            {
+                                name: "Gymmy",
+                                url: "https://gymmythegymbuddy.netlify.app/",
+                                description: "Workout planning and motivation app",
+                                tech: ["CSS", "React", "JavaScript"],
+                                image: gymmyImg
+                            },
+                            {
+                                name: "TheResumeGriller",
+                                url: "https://the-resume-griller.vercel.app/",
+                                description: "Resume analysis and feedback tool",
+                                tech: ["React", "JavaScript", "Tailwind CSS", "Hugging Face API"],
+                                image: resumegrillerImg
+                            }
+                        ].map((project, index) => (
                             <motion.a
                                 href={project.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 key={index}
                                 whileHover={{ y: -5 }}
-                                className="bg-background-lighter rounded-lg overflow-hidden group"
+                                className="bg-background-lighter rounded-lg overflow-hidden group transform-gpu"
                             >
                                 <div className="relative aspect-video overflow-hidden">
                                     <img
@@ -435,11 +468,11 @@ const Portfolio = () => {
                     {/* Degree Information */}
                     <motion.div
                         whileHover={{ scale: 1.02 }}
-                        className="bg-background-lighter p-6 rounded-lg mb-8"
+                        className="bg-background-lighter p-6 rounded-lg mb-8 transform-gpu"
                     >
-                        <h3 className="text-2xl font-semibold text-blue-400 mb-2">Computer Science with a minor in Quantitative Finance</h3>
+                        <h3 className="text-2xl font-semibold text-blue-400 mb-2">Computer Science with a Minor in Quantitative Finance</h3>
                         <p className="text-xl text-gray-300 mb-1">National University of Singapore (NUS)</p>
-                        <p className="text-gray-400 mb-4">Year 2 Student</p>
+                        <p className="text-gray-400 mb-4">Sophomore</p>
                     </motion.div>
 
                     {/* Relevant Coursework */}
@@ -490,7 +523,7 @@ const Portfolio = () => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     whileHover={{ scale: 1.05 }}
-                                    className="bg-background-lighter p-4 rounded text-gray-300 hover:bg-background transition-colors"
+                                    className="bg-background-lighter p-4 rounded text-gray-300 hover:bg-background transition-colors transform-gpu"
                                 >
                                     {course.name}
                                 </motion.a>
@@ -520,7 +553,7 @@ const Portfolio = () => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     whileHover={{ scale: 1.02 }}
-                                    className="bg-background-lighter p-4 rounded-lg"
+                                    className="bg-background-lighter p-4 rounded-lg transform-gpu"
                                 >
                                     <h4 className="font-semibold text-blue-400">{cert.name}</h4>
                                     <p className="text-gray-400">{cert.issuer}</p>
@@ -546,7 +579,7 @@ const Portfolio = () => {
                                 <motion.div
                                     key={index}
                                     whileHover={{ scale: 1.02 }}
-                                    className="bg-background-lighter p-4 rounded-lg"
+                                    className="bg-background-lighter p-4 rounded-lg transform-gpu"
                                 >
                                     <h4 className="font-semibold text-blue-400">{hackathon.name}</h4>
                                     <p className="text-green-400 font-medium">{hackathon.position}</p>
@@ -563,10 +596,10 @@ const Portfolio = () => {
                     <h2 className="text-3xl font-bold mb-6">Get In Touch</h2>
                     <motion.div
                         whileHover={{ scale: 1.02 }}
-                        className="bg-background-lighter p-6 rounded-lg max-w-xl mx-auto"
+                        className="bg-background-lighter p-6 rounded-lg max-w-xl mx-auto transform-gpu"
                     >
                         <p className="text-gray-400 mb-4">
-                            Feel free to reach out for collaborations or just a friendly hello!
+                            Feel free to reach out for collaborations or drop a friendly hello!
                         </p>
                         <motion.a
                             href="mailto:darren.lim.off@gmail.com"
@@ -577,8 +610,8 @@ const Portfolio = () => {
                             Say Hello
                         </motion.a>
                         <div className="flex justify-center space-x-6">
-                            <SocialLink href="https://github.com/darrny">GitHub</SocialLink>
-                            <SocialLink href="https://linkedin.com/in/darrny">LinkedIn</SocialLink>
+                            <SocialLink href="https://github.com/darrny" icon={Github} />
+                            <SocialLink href="https://linkedin.com/in/darrny" icon={Linkedin} />
                         </div>
                     </motion.div>
                 </div>
@@ -590,7 +623,7 @@ const Portfolio = () => {
                     Designed & Built by Darren Lim © 2024
                 </div>
             </footer>
-        </div>
+        </div >
     );
 };
 
