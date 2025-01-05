@@ -48,18 +48,18 @@ const Portfolio = () => {
 
     const featuredProjects = [
         {
-            name: "Jobu",
-            url: "https://jobu-jat.netlify.app/",
-            description: "Full-stack job application tracking system with categorization, progress tracking, and event logging",
-            tech: ["React", "Firebase", "JavaScript", "Tailwind CSS"],
-            image: jobuImg
-        },
-        {
             name: "Spotifyou",
             url: "https://spotifyou.vercel.app/",
             description: "Spotify companion with AI integration for listening statistics and recommendations",
             tech: ["React", "Supabase", "Gemini AI", "JavaScript", "Spotify API"],
             image: spotifyouImg
+        },
+        {
+            name: "Jobu",
+            url: "https://jobu-jat.netlify.app/",
+            description: "Full-stack job application tracking system with categorization, progress tracking, and event logging",
+            tech: ["React", "Firebase", "JavaScript", "Tailwind CSS"],
+            image: jobuImg
         },
         {
             name: "FeinAlpha",
@@ -100,9 +100,13 @@ const Portfolio = () => {
                     {/* Mobile Menu Button */}
                     <button
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className="md:hidden text-white"
+                        className="md:hidden text-white p-2 hover:text-blue-400 transition-colors"
                     >
-                        {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                        {isMenuOpen ? (
+                            <X size={24} className="text-blue-400" />
+                        ) : (
+                            <Menu size={24} />
+                        )}
                     </button>
                 </div>
 
@@ -111,19 +115,47 @@ const Portfolio = () => {
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="md:hidden bg-background/95 backdrop-blur-sm"
+                        className="absolute top-16 left-0 right-0 bg-black/60 backdrop-blur-sm z-40 border-b border-white/10"
                     >
-                        <div className="flex flex-col px-4 py-2">
-                            {['About', 'Experience', 'Projects', 'Education', 'Contact'].map((item) => (
-                                <a
-                                    key={item}
-                                    href={`#${item.toLowerCase()}`}
-                                    onClick={() => setIsMenuOpen(false)}
-                                    className="py-2 hover:text-blue-400 transition-colors"
+                        <div className="p-4 flex flex-col items-stretch">
+                            <div className="flex flex-col space-y-6">
+                                {['About', 'Experience', 'Projects', 'Education', 'Contact'].map((item) => (
+                                    <motion.a
+                                        key={item}
+                                        href={`#${item.toLowerCase()}`}
+                                        onClick={() => setIsMenuOpen(false)}
+                                        whileHover={{ x: 10 }}
+                                        className="text-white hover:text-blue-400 transition-colors text-lg"
+                                    >
+                                        {item}
+                                    </motion.a>
+                                ))}
+                            </div>
+
+                            <div className="border-t border-white/10 my-6" />
+
+                            <motion.a
+                                href={resumePDF}
+                                download="Darren_Lim_Resume.pdf"
+                                whileHover={{ scale: 1.02 }}
+                                className="bg-blue-500 text-white px-6 py-3 rounded-full flex items-center justify-center gap-2 hover:bg-blue-600 transition-colors"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-5 w-5"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
                                 >
-                                    {item}
-                                </a>
-                            ))}
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                                    />
+                                </svg>
+                                Download Resume
+                            </motion.a>
                         </div>
                     </motion.div>
                 )}
@@ -141,7 +173,7 @@ const Portfolio = () => {
                             Hi, I'm <span className="text-blue-500">Darren</span><br />
                         </h1>
                         <p className="text-xl text-gray-400 mt-4">
-                            "I dance and I code."
+                            "I do some coding stuff"
                         </p>
                         <div className="flex space-x-6 mt-4">
                             <SocialLink href="https://github.com/darrny" icon={Github} />
@@ -193,7 +225,7 @@ const Portfolio = () => {
                 <div className="max-w-6xl mx-auto px-4">
                     <h2 className="text-3xl font-bold mb-8">About Me</h2>
                     <p className="text-xl text-gray-300 mb-12">
-                        I'm a Software Engineer based in Singapore! I plan to specialise in AI/ML and Database Systems.
+                        I'm a Software Engineer based in <span className="text-blue-500">Singapore</span> and I specialise in <span className="text-blue-500">AI/ML</span> and <span className="text-blue-500">Database Systems</span>
                     </p>
 
                     {/* Skills Grid */}
@@ -201,17 +233,18 @@ const Portfolio = () => {
                         {/* Languages */}
                         <motion.div
                             whileHover={{ y: -5 }}
-                            className="bg-background p-6 rounded-lg transform-gpu"
+                            className="bg-background-lighter p-6 rounded-lg transform-gpu"
                         >
                             <h3 className="text-xl font-semibold text-blue-400 mb-4">Languages</h3>
                             <div className="flex flex-wrap gap-2">
                                 {[
                                     'Python',
                                     'JavaScript',
-                                    'SQL',
+                                    'HTML',
+                                    'CSS',
                                     'VBA'
                                 ].map((skill) => (
-                                    <span key={skill} className="bg-blue-500/10 text-blue-300 px-3 py-1 rounded-full text-sm">
+                                    <span key={skill} className="text-xs bg-blue-500/20 text-blue-300 px-3 py-1 rounded">
                                         {skill}
                                     </span>
                                 ))}
@@ -221,11 +254,12 @@ const Portfolio = () => {
                         {/* Technologies */}
                         <motion.div
                             whileHover={{ y: -5 }}
-                            className="bg-background p-6 rounded-lg transform-gpu"
+                            className="bg-background-lighter p-6 rounded-lg transform-gpu"
                         >
                             <h3 className="text-xl font-semibold text-blue-400 mb-4">Technologies</h3>
                             <div className="flex flex-wrap gap-2">
                                 {[
+                                    'HTML',
                                     'React',
                                     'React Native',
                                     'Node.js',
@@ -235,9 +269,9 @@ const Portfolio = () => {
                                     'Tailwind CSS',
                                     'Express',
                                     'Pandas',
-                                    'HTML'
+                                    'NumPy',
                                 ].map((skill) => (
-                                    <span key={skill} className="bg-blue-500/10 text-blue-300 px-3 py-1 rounded-full text-sm">
+                                    <span key={skill} className="text-xs bg-blue-500/20 text-blue-300 px-3 py-1 rounded">
                                         {skill}
                                     </span>
                                 ))}
@@ -247,7 +281,7 @@ const Portfolio = () => {
                         {/* APIs */}
                         <motion.div
                             whileHover={{ y: -5 }}
-                            className="bg-background p-6 rounded-lg transform-gpu"
+                            className="bg-background-lighter p-6 rounded-lg transform-gpu"
                         >
                             <h3 className="text-xl font-semibold text-blue-400 mb-4">APIs</h3>
                             <div className="flex flex-wrap gap-2">
@@ -259,7 +293,7 @@ const Portfolio = () => {
                                     'OpenAI API',
                                     'AISStream API'
                                 ].map((skill) => (
-                                    <span key={skill} className="bg-blue-500/10 text-blue-300 px-3 py-1 rounded-full text-sm">
+                                    <span key={skill} className="text-xs bg-blue-500/20 text-blue-300 px-3 py-1 rounded">
                                         {skill}
                                     </span>
                                 ))}
@@ -275,6 +309,15 @@ const Portfolio = () => {
                     <h2 className="text-3xl font-bold mb-12">Experience</h2>
                     <div className="space-y-8">
                         {[
+                            {
+                                role: "AI Software Engineer Intern (Incoming)",
+                                company: "GoNetZero, Sembcorp Industries",
+                                period: "Soon",
+                                description: [
+                                    "Hopefully a lot of cool stuff"
+                                ],
+                                tech: "Hopefully a lot of cool tech"
+                            },
                             {
                                 role: "Software Engineer Intern",
                                 company: "Golden Island",
@@ -321,13 +364,19 @@ const Portfolio = () => {
                                     </div>
                                     <span className="text-sm text-gray-500">{exp.period}</span>
                                 </div>
-                                <ul className="list-disc list-inside text-gray-300 space-y-2">
+                                <ul className="list-disc text-gray-300 space-y-2 ml-4">
                                     {exp.description.map((item, i) => (
-                                        <li key={i}>{item}</li>
+                                        <li key={i} className="pl-2">
+                                            <span>{item}</span>
+                                        </li>
                                     ))}
                                 </ul>
-                                <div className="mt-4 text-blue-400">
-                                    Technologies: {exp.tech}
+                                <div className="mt-4 flex flex-wrap gap-2">
+                                    {exp.tech.split(', ').map((tech, i) => (
+                                        <span key={i} className="text-xs bg-blue-500/20 text-blue-300 px-3 py-1 rounded">
+                                            {tech}
+                                        </span>
+                                    ))}
                                 </div>
                             </motion.div>
                         ))}
