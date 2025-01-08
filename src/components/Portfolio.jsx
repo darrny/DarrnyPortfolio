@@ -586,14 +586,24 @@ const Portfolio = () => {
                         <div className="grid md:grid-cols-2 gap-4">
                             {[
                                 {
+                                    name: "Introduction to Generative AI",
+                                    issuer: "Duke University",
+                                    url: "https://coursera.org/share/76507ed9601f6c843e2065f0f1be71bd"
+                                },
+                                {
                                     name: "Introduction to Structured Query Language (SQL)",
-                                    issuer: "Coursera",
-                                    url: "https://www.coursera.org/account/accomplishments/verify/O416L1SSDRPD"
+                                    issuer: "University of Michigan",
+                                    url: "https://coursera.org/share/1df9c8f2bf4d2a9275db7a31039671d0"
+                                },
+                                {
+                                    name: "Python and Statistics for Financial Analysis",
+                                    issuer: "University of Michigan",
+                                    url: "https://coursera.org/share/1b4e20e4b549b8fbe4fdfee37651f7c3"
                                 },
                                 {
                                     name: "Platform Thinking: what's beyond Uber?",
-                                    issuer: "Coursera",
-                                    url: "https://www.coursera.org/account/accomplishments/verify/5GY6RHTSE4XQ"
+                                    issuer: "Politecnico di Milano",
+                                    url: "https://coursera.org/share/71443e124de3b5a79513096e972b5f6a"
                                 }
                             ].map((cert, index) => (
                                 <motion.a
