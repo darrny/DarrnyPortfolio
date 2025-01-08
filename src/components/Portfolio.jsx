@@ -564,7 +564,19 @@ const Portfolio = () => {
                                 {
                                     name: "Calculus for Computing",
                                     url: "https://nusmods.com/courses/MA1521/calculus-for-computing"
-                                }
+                                },
+                                {
+                                    name: "Database Systems",
+                                    url: "https://nusmods.com/courses/CS2102/database-systems"
+                                },
+                                {
+                                    name: "Introduction to Operating Systems",
+                                    url: "https://nusmods.com/courses/CS2106/introduction-to-operating-systems"
+                                },
+                                {
+                                    name: "Introduction to AI and Machine Learning",
+                                    url: "https://nusmods.com/courses/CS2109S/introduction-to-ai-and-machine-learning"
+                                },
                             ].map((course, index) => (
                                 <motion.a
                                     key={index}
