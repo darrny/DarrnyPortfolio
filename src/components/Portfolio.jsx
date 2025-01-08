@@ -609,7 +609,7 @@ const Portfolio = () => {
                                 },
                                 {
                                     name: "Python and Statistics for Financial Analysis",
-                                    issuer: "University of Michigan",
+                                    issuer: "The Hong Kong University of Science and Technology",
                                     url: "https://coursera.org/share/1b4e20e4b549b8fbe4fdfee37651f7c3"
                                 },
                                 {
