@@ -325,7 +325,7 @@ const Portfolio = () => {
                                 description: [
                                     "Developed a Fleet Tracker with Pandas to track locations of 1000 ships with 320,000 lines of data daily",
                                     "Implemented algorithm to track ship proximity using Haversine Formula, achieving over 90% accuracy in docking detection",
-                                    "Developed Fleet Simulation System for 1000 ships"
+                                    "Integrated the above into a desktop application using PyQt, allowing for 100% data streaming up time"
                                 ],
                                 tech: "Python, Node.js, Supabase, RESTful API"
                             },
@@ -577,6 +577,10 @@ const Portfolio = () => {
                                     name: "Introduction to AI and Machine Learning",
                                     url: "https://nusmods.com/courses/CS2109S/introduction-to-ai-and-machine-learning"
                                 },
+                                {
+                                    name: "Probability and Statistics",
+                                    url: "https://nusmods.com/courses/ST2334/probability-and-statistics"
+                                },  
                             ].map((course, index) => (
                                 <motion.a
                                     key={index}
