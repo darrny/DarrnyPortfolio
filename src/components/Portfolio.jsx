@@ -58,7 +58,7 @@ const Portfolio = () => {
         {
             name: "Jobu",
             url: "https://jobu-jat.netlify.app/",
-            description: "Full-stack job application tracking system with categorization, progress tracking, and event logging",
+            description: "Full-stack job application tracking system with categorisation, progress tracking, and event logging",
             tech: ["React", "Firebase", "JavaScript", "Tailwind CSS"],
             image: jobuImg
         },
