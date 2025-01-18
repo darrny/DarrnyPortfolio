@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m, motion } from 'framer-motion';
 import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
 
 // Import assets
@@ -16,6 +16,7 @@ import querysenseImg from '../assets/projects/querysense.png';
 import imageinationImg from '../assets/projects/imageination.png';
 import gymmyImg from '../assets/projects/gymmy.png';
 import resumegrillerImg from '../assets/projects/resumegriller.png';
+import cryptoprediction from '../assets/projects/cryptoprediction.png';
 
 const Section = ({ children, id, className }) => (
     <motion.section
@@ -48,11 +49,11 @@ const Portfolio = () => {
 
     const featuredProjects = [
         {
-            name: "Spotifyou",
-            url: "https://spotifyou.vercel.app/",
-            description: "Spotify companion with AI integration for listening statistics and recommendations",
-            tech: ["React", "Supabase", "Gemini AI", "JavaScript", "Spotify API"],
-            image: spotifyouImg
+            name: "Cryptocurrency Prediction",
+            url: "https://github.com/darrny/Cryptocurrency-Price-Prediction/blob/main/Cryptocurrency%20Price%20Prediction%20Model.ipynb",
+            description: "Cryptocurrency price prediction model using LSTM neural networks and data visualisation",
+            tech: ["Python", "TensorFlow", "Pandas", "scikit-learn"],
+            image: cryptoprediction
         },
         {
             name: "Jobu",
@@ -67,7 +68,14 @@ const Portfolio = () => {
             description: "Portfolio management application with secure authentication and management features",
             tech: ["React", "Node.js", "Express", "MongoDB", "Firebase"],
             image: feinalpha
-        }
+        },
+        {
+            name: "Spotifyou",
+            url: "https://spotifyou.vercel.app/",
+            description: "Spotify companion with AI integration for listening statistics and recommendations",
+            tech: ["React", "Supabase", "Gemini AI", "JavaScript", "Spotify API"],
+            image: spotifyouImg
+        },
     ];
 
     return (
@@ -239,9 +247,10 @@ const Portfolio = () => {
                             <div className="flex flex-wrap gap-2">
                                 {[
                                     'Python',
+                                    'C',
+                                    'Java',
                                     'JavaScript',
-                                    'HTML',
-                                    'CSS',
+                                    'SQL',
                                     'VBA'
                                 ].map((skill) => (
                                     <span key={skill} className="text-xs bg-blue-500/20 text-blue-300 px-3 py-1 rounded">
@@ -259,17 +268,21 @@ const Portfolio = () => {
                             <h3 className="text-xl font-semibold text-blue-400 mb-4">Technologies</h3>
                             <div className="flex flex-wrap gap-2">
                                 {[
-                                    'HTML',
+                                    'MongoDB',
+                                    'Express',
                                     'React',
                                     'React Native',
-                                    'Node.js',
+                                    'Node',
                                     'Firebase',
                                     'Supabase',
-                                    'MongoDB',
-                                    'Tailwind CSS',
-                                    'Express',
+                                    'Next.js',
                                     'Pandas',
                                     'NumPy',
+                                    'TensorFlow',
+                                    'scikit-learn',
+                                    'PyQt',
+                                    'HTML',
+                                    'CSS'
                                 ].map((skill) => (
                                     <span key={skill} className="text-xs bg-blue-500/20 text-blue-300 px-3 py-1 rounded">
                                         {skill}
@@ -286,12 +299,13 @@ const Portfolio = () => {
                             <h3 className="text-xl font-semibold text-blue-400 mb-4">APIs</h3>
                             <div className="flex flex-wrap gap-2">
                                 {[
-                                    'Spotify API',
-                                    'Hugging Face API',
-                                    'Google Generative AI',
-                                    'Gemini AI',
-                                    'OpenAI API',
-                                    'AISStream API'
+                                    'Spotify',
+                                    'Hugging Face',
+                                    'Google Gemini',
+                                    'Anthropic',
+                                    'OpenAI',
+                                    'AISStream',
+                                    'PokeAPI'
                                 ].map((skill) => (
                                     <span key={skill} className="text-xs bg-blue-500/20 text-blue-300 px-3 py-1 rounded">
                                         {skill}
@@ -327,7 +341,7 @@ const Portfolio = () => {
                                     "Implemented algorithm to track ship proximity using Haversine Formula, achieving over 90% accuracy in docking detection",
                                     "Integrated the above into a desktop application using PyQt, allowing for 100% data streaming up time"
                                 ],
-                                tech: "Python, Node.js, Supabase, RESTful API"
+                                tech: "Pandas, Python, PyQt"
                             },
                             {
                                 role: "Software Developer",
@@ -519,7 +533,7 @@ const Portfolio = () => {
                         whileHover={{ scale: 1.02 }}
                         className="bg-background-lighter p-6 rounded-lg mb-8 transform-gpu"
                     >
-                        <h3 className="text-2xl font-semibold text-blue-400 mb-2">Computer Science with a Minor in Quantitative Finance</h3>
+                        <h3 className="text-2xl font-semibold text-blue-400 mb-2">Bachelor of Computing in Computer Science with a Minor in Quantitative Finance</h3>
                         <p className="text-xl text-gray-300 mb-1">National University of Singapore (NUS)</p>
                         <p className="text-gray-400 mb-4">Sophomore</p>
                     </motion.div>
