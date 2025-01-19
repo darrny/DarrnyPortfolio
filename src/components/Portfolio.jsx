@@ -325,7 +325,7 @@ const Portfolio = () => {
                     <div className="space-y-8">
                         {[
                             {
-                                role: "AI Software Engineer Intern (Incoming)",
+                                role: "AI/ML Software Engineer Intern (Incoming)",
                                 company: "GoNetZero, Sembcorp Industries",
                                 period: "Soon",
                                 description: [
