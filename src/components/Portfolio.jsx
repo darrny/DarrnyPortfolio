@@ -338,8 +338,8 @@ const Portfolio = () => {
                                 company: "Golden Island",
                                 period: "Dec 2024 - Present",
                                 description: [
-                                    "Developed a Fleet Tracker with Pandas to track locations of 1000 ships with 320,000 lines of data daily",
-                                    "Implemented algorithm to track ship proximity using Haversine Formula, achieving over 90% accuracy in docking detection",
+                                    "Developed a Fleet Tracker with Pandas to track locations of 1000 ships with 600,000 lines of data daily",
+                                    "Implemented algorithm to track ship proximity using Haversine Formula, achieving over 80% accuracy in docking detection",
                                     "Integrated the above into a desktop application using PyQt, allowing for 100% data streaming up time"
                                 ],
                                 tech: "Pandas, Python, PyQt"
@@ -350,7 +350,7 @@ const Portfolio = () => {
                                 period: "Aug 2024 - Present",
                                 description: [
                                     "Developed Full-Stack Hostel Management Web Application (468 users)",
-                                    "Developing Mobile Hostel Application (targeting 500 users)",
+                                    "Developing Mobile Hostel Application (500 users)",
                                     "Implemented Newsletter Feature and Authentication with access control"
                                 ],
                                 tech: "React, Firebase, React Native, Tailwind CSS"
