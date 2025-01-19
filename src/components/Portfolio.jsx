@@ -17,6 +17,7 @@ import imageinationImg from '../assets/projects/imageination.png';
 import gymmyImg from '../assets/projects/gymmy.png';
 import resumegrillerImg from '../assets/projects/resumegriller.png';
 import cryptoprediction from '../assets/projects/cryptoprediction.png';
+import comingsoonImg from '../assets/projects/comingsoon.png';
 
 const Section = ({ children, id, className }) => (
     <motion.section
@@ -453,11 +454,11 @@ const Portfolio = () => {
                                 image: howthefeelsImg
                             },
                             {
-                                name: "DarrnyDotCom",
+                                name: "Coming soon...",
                                 url: "https://darrny.netlify.app/",
-                                description: "Personal portfolio website",
-                                tech: ["CSS", "React"],
-                                image: darrnydotcomImg
+                                description: "Stay tuned to find out more...",
+                                tech: ["Top Secret Tech"],
+                                image: comingsoonImg
                             },
                             {
                                 name: "QuerySense",
