@@ -447,25 +447,18 @@ const Portfolio = () => {
                     <div className="grid md:grid-cols-3 gap-6">
                         {[
                             {
-                                name: "HowTheFeels",
-                                url: "https://how-the-feels.vercel.app/",
-                                description: "Natural language processing application",
-                                tech: ["React", "JavaScript", "Tailwind CSS", "Hugging Face API"],
-                                image: howthefeelsImg
-                            },
-                            {
-                                name: "Coming soon...",
-                                url: "https://darrny.netlify.app/",
-                                description: "Stay tuned to find out more...",
-                                tech: ["Top Secret Tech"],
-                                image: comingsoonImg
-                            },
-                            {
                                 name: "QuerySense",
                                 url: "https://querysense.vercel.app/",
                                 description: "Data analysis application with AI integration",
                                 tech: ["React", "JavaScript", "Tailwind CSS", "Google Generative AI"],
                                 image: querysenseImg
+                            },
+                            {
+                                name: "HowTheFeels",
+                                url: "https://how-the-feels.vercel.app/",
+                                description: "Natural language processing application",
+                                tech: ["React", "JavaScript", "Tailwind CSS", "Hugging Face API"],
+                                image: howthefeelsImg
                             },
                             {
                                 name: "Imageination",
@@ -475,6 +468,13 @@ const Portfolio = () => {
                                 image: imageinationImg
                             },
                             {
+                                name: "TheResumeGriller",
+                                url: "https://the-resume-griller.vercel.app/",
+                                description: "Resume analysis and feedback tool",
+                                tech: ["React", "JavaScript", "Tailwind CSS", "Hugging Face API"],
+                                image: resumegrillerImg
+                            },
+                            {
                                 name: "Gymmy",
                                 url: "https://gymmythegymbuddy.netlify.app/",
                                 description: "Workout planning and motivation app",
@@ -482,12 +482,12 @@ const Portfolio = () => {
                                 image: gymmyImg
                             },
                             {
-                                name: "TheResumeGriller",
-                                url: "https://the-resume-griller.vercel.app/",
-                                description: "Resume analysis and feedback tool",
-                                tech: ["React", "JavaScript", "Tailwind CSS", "Hugging Face API"],
-                                image: resumegrillerImg
-                            }
+                                name: "Coming soon...",
+                                url: "https://darrny.netlify.app/",
+                                description: "Stay tuned to find out more...",
+                                tech: ["Top Secret Tech"],
+                                image: comingsoonImg
+                            },
                         ].map((project, index) => (
                             <motion.a
                                 href={project.url}
@@ -595,7 +595,7 @@ const Portfolio = () => {
                                 {
                                     name: "Probability and Statistics",
                                     url: "https://nusmods.com/courses/ST2334/probability-and-statistics"
-                                },  
+                                },
                             ].map((course, index) => (
                                 <motion.a
                                     key={index}
